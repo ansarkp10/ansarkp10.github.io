@@ -317,39 +317,43 @@
 		
 		<!-- START CONTACT -->
 			<section id="contact" class="gray_bg section_padding">
-				<div class="container">
-					<div class="col-md-12 col-sm-12-col-xs-12">
-						<div class="section_heading text-center">
-							<h2>Contact <span>Us</span></h2>							
-							<div class="sm_border"></div>
-						</div>	
-					</div>	
-					
-					<div class="row">						
-						<div class="col-md-12 col-sm-12">
-							<form class="form" name="enq" method="post" action="index.html" onsubmit="return validation();">
-								<div class="row">
-									<div class="form-group col-md-4">
-										<input type="text" name="name" class="form-control" placeholder="Name" required="required">
-									</div>
-									<div class="form-group col-md-4">
-										<input type="email" name="email" class="form-control" placeholder="Email" required="required">
-									</div>
-									<div class="form-group col-md-4">
-										<input type="text" name="subject" class="form-control" placeholder="Subject" required="required">
-									</div>
-									<div class="form-group col-md-12">
-										<textarea rows="6" name="message" class="form-control" placeholder="Your Message" required="required"></textarea>
-									</div>
-									<div class="col-md-12 text-center">
-										<button type="submit" value="Send message" name="submit" id="submitButton" class="btn btn-default main_btn" title="Submit Your Message!">Send Message</button>
-									</div>
-								</div>
-							</form>
-						</div>						
-					</div>
-				</div>
-			</section>
+    <div class="container">
+        <div class="col-md-12 col-sm-12-col-xs-12">
+            <div class="section_heading text-center">
+                <h2>Contact <span>Us</span></h2>							
+                <div class="sm_border"></div>
+            </div>	
+        </div>	
+        
+        <div class="row">						
+            <div class="col-md-12 col-sm-12">
+                <form class="form" name="enq" method="POST" action="https://api.web3forms.com/submit" onsubmit="return validation();">
+                
+                    <input type="hidden" name="access_key" value="7b27ed99-1809-4bd1-b663-506a7eb47c01">
+                    
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <input type="text" name="name" class="form-control" placeholder="Name" required="required">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type="email" name="email" class="form-control" placeholder="Email" required="required">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type="text" name="subject" class="form-control" placeholder="Subject" required="required">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <textarea rows="6" name="message" class="form-control" placeholder="Your Message" required="required"></textarea>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <button type="submit" value="Send message" name="submit" id="submitButton" class="btn btn-default main_btn" title="Submit Your Message!">Send Message</button>
+                        </div>
+                    </div>
+                </form>
+            </div>						
+        </div>
+    </div>
+</section>
+
 		<!-- END CONTACT -->
 		
 		<!-- START FOOTER -->
