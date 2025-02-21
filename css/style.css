@@ -545,50 +545,60 @@ a:hover{
 /* ----------------------------------------------------------------
     [ 06 Start Service ]
 -----------------------------------------------------------------*/
-.single-service{
-	border: 1px solid #e3e3e3;
+.single-service {
+    border: 1px solid #e3e3e3;
     padding: 40px 30px;
-	background: transparent;
+    background: transparent;
     margin-bottom: 30px;
     transition: all 0.4s ease;
 }
-.single-service:hover{
-	transform: translate(0, -10px);
+
+.single-service:hover {
+    transform: translate(0, -10px);
 }
+
 .single-service i {
-	width: 50px;
+    width: 50px;
     height: 50px;
-	line-height: 50px;
-	border: 1px solid #ff4a57;
-	text-align: center;
-	transition: all 0.4s ease;
+    line-height: 50px;
+    border: 1px solid #ff4a57;
+    text-align: center;
     font-size: 25px;
     display: inline-block;
     color: #ff4a57;
+    transition: all 0.4s ease;
 }
-.single-service:hover i{
-	background: #ff4a57;
-	color: #fff;
-	border: 1px solid #ff4a57;
+
+.single-service:hover i {
+    background: #ff4a57;
+    color: #fff;
+    border: 1px solid #ff4a57;
 }
-.single-service h4{
+
+.single-service h4 {
     font-size: 20px;
     margin-top: 30px;
     text-transform: uppercase;
     color: #222;
     font-weight: 500;
-	transition: all 0.4s ease;
+    transition: all 0.4s ease;
 }
-.dark_bg .single-service h4{
-	color: #fff;
+
+.single-service p {
+    margin-top: 15px;
+    color: #333; /* Default color for text */
+    transition: all 0.4s ease;
 }
-.single-service p{
-	transition: all 0.4s ease;
-	margin-top: 15px;
+
+/* For dark background */
+.dark_bg .single-service h4 {
+    color: #fff;
 }
-.dark_bg .single-service p{
-	color: #fff;
+
+.dark_bg .single-service p {
+    color: #fff;
 }
+
 /* ----------------------------------------------------------------
     [ End Service ]
 -----------------------------------------------------------------*/
