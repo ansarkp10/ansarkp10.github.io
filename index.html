@@ -8,12 +8,6 @@
   <!-- Favicon - AK Icon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2338bdf8'/%3E%3Ctext x='50' y='68' font-size='48' font-family='Arial, sans-serif' font-weight='bold' fill='%23020617' text-anchor='middle'%3EAK%3C/text%3E%3C/svg%3E">
   
-  <!-- Alternative: Multiple format favicons for better browser support -->
-  <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAC8SURBVFhH7ZBRDsIgEEUZQY+gR9AjcAQuwSXoEvQIegQ9wiw/YIxJoZRCodWkL5P2demjM1MgIp1Q8oQSXw7iA+ID4gPiA+ID4gPiA+ID4gPiA+ID4gMynUdrXcC5HRAfEB8QHxAfEB8QHxAfEB8QHxAfEB8QHxAfEB8QHxAfEB8QHxAfEB8QHxAfEB8QHxAfEB8QHxAfEB8QHxAfEB8QHxAfEB8QHxAfEB8QHxAfEB8QHxAfEB8QHxAfEB8QHxAfEB8QHxAfEB8QHxAfEB/Q+wN7NzdwQeywXAAAAABJRU5ErkJggg==">
-  
-  <!-- Apple Touch Icon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%2338bdf8'/%3E%3Ctext x='90' y='122' font-size='86' font-family='Arial, sans-serif' font-weight='bold' fill='%23020617' text-anchor='middle'%3EAK%3C/text%3E%3C/svg%3E">
-  
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -81,6 +75,7 @@
       color: transparent;
     }
 
+    /* Desktop Navigation */
     .nav-links {
       display: flex;
       gap: 1.5rem;
@@ -99,14 +94,101 @@
 
     .nav-links a:hover { color: var(--accent-primary); }
 
-    .hub-link {
-      background: rgba(56, 189, 248, 0.08);
-      border: 1px solid var(--accent-primary);
-      padding: 0.35rem 1.1rem;
-      border-radius: 40px;
-      color: var(--accent-primary) !important;
-      font-weight: 600;
-      font-size: 0.8rem;
+    /* Hamburger Menu Button - 3 lines */
+/* Fix for Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 200;
+}
+
+.hamburger span {
+  width: 100%;
+  height: 3px;
+  background: var(--text-main);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* When menu is open - turns into X */
+.hamburger.open span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Mobile view - show hamburger */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+}
+    /* Mobile Navigation Menu */
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 70%;
+      max-width: 300px;
+      height: 100vh;
+      background: var(--bg-surface);
+      backdrop-filter: blur(20px);
+      border-left: 1px solid var(--border-glow);
+      z-index: 150;
+      padding: 5rem 2rem 2rem;
+      transition: right 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .mobile-nav.open {
+      right: 0;
+    }
+
+    .mobile-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 500;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+      transition: 0.2s;
+    }
+
+    .mobile-nav a:hover {
+      color: var(--accent-primary);
+      padding-left: 0.5rem;
+    }
+
+    /* Overlay when mobile menu is open */
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 140;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .menu-overlay.open {
+      opacity: 1;
+      visibility: visible;
     }
 
     /* HERO SECTION */
@@ -237,7 +319,40 @@
       color: var(--text-muted);
       margin-top: 0.25rem;
     }
+    /* Hamburger Menu Button - 3 lines */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 200;
+  position: relative;
+}
 
+.hamburger span {
+  width: 100%;
+  height: 3px;
+  background: var(--text-main);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Hamburger animation for open state - creates X icon */
+.hamburger.open span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
     .btn-group {
       display: flex;
       gap: 1rem;
@@ -751,10 +866,22 @@
       }
     }
 
-    @media (max-width: 640px) {
+    /* Mobile View */
+    @media (max-width: 768px) {
       .container {
         padding: 0 1.2rem;
       }
+      
+      /* Hide desktop nav links on mobile */
+      .nav-links {
+        display: none;
+      }
+      
+      /* Show hamburger on mobile */
+      .hamburger {
+        display: flex;
+      }
+      
       .grid-2col {
         grid-template-columns: 1fr;
         gap: 1rem;
@@ -783,6 +910,37 @@
         width: 40px;
         height: 40px;
       }
+      .hero-name {
+        font-size: 1.8rem;
+      }
+      .profile-card {
+        max-width: 240px;
+      }
+      .profile-img {
+        max-width: 200px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-name {
+        font-size: 1.5rem;
+      }
+      .hero-tagline {
+        font-size: 0.9rem;
+      }
+      .btn-primary, .btn-outline {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.75rem;
+      }
+      .stat-number {
+        font-size: 1.1rem;
+      }
+      .profile-card {
+        max-width: 200px;
+      }
+      .profile-img {
+        max-width: 160px;
+      }
     }
   </style>
 </head>
@@ -791,6 +949,8 @@
 <nav class="navbar">
   <div class="container nav-inner">
     <span class="logo">K·ANSAR</span>
+    
+    <!-- Desktop Navigation -->
     <ul class="nav-links">
       <li><a href="#projects">Projects</a></li>
       <li><a href="#education">Education</a></li>
@@ -798,8 +958,28 @@
       <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    
+    <!-- Hamburger Menu Button for Mobile -->
+    <div class="hamburger" id="hamburgerBtn" onclick="toggleMobileMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </div>
 </nav>
+
+<!-- Mobile Navigation Menu -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#projects" onclick="closeMobileMenu()">📁 Projects</a>
+  <a href="#education" onclick="closeMobileMenu()">🎓 Education</a>
+  <a href="#services" onclick="closeMobileMenu()">⚙️ Services</a>
+  <a href="#skills" onclick="closeMobileMenu()">💻 Skills</a>
+  <a href="#contact" onclick="closeMobileMenu()">📧 Contact</a>
+  <a href="Resume.pdf" download onclick="closeMobileMenu()">📄 Download Resume</a>
+</div>
+
+<!-- Overlay -->
+<div class="menu-overlay" id="menuOverlay" onclick="closeMobileMenu()"></div>
 
 <main>
   <!-- HERO SECTION -->
@@ -807,9 +987,9 @@
     <div class="hero-stacked">
       <div class="hero-image-row">
         <div class="profile-card">
-  <img class="profile-img" src="Profile.jpeg" alt="K Ansar" onerror="this.src='https://ui-avatars.com/api/?background=0F172A&color=38BDF8&bold=true&size=250&name=KA&length=2'">
-  <div class="profile-caption"><i class="fas fa-user-astronaut"></i> MCA · KTU | Meta Certified</div>
-</div>
+          <img class="profile-img" src="Profile.jpeg" alt="K Ansar" onerror="this.src='https://ui-avatars.com/api/?background=0F172A&color=38BDF8&bold=true&size=250&name=KA&length=2'">
+          <div class="profile-caption"><i class="fas fa-user-astronaut"></i> MCA · KTU | Meta Certified</div>
+        </div>
       </div>
       <div class="hero-content">
         <div class="hero-badge"><i class="fas fa-crown"></i> Full Stack · AI · 3+ years</div>
@@ -891,7 +1071,6 @@
           <div class="exp-date">2024 – 2025</div>
           <div class="exp-desc">ML pipelines, NLP integration, optimized data preprocessing with Python/TensorFlow</div>
         </div>
-
       </div>
 
       <div class="info-card">
@@ -972,48 +1151,45 @@
     </div>
 
     <!-- CONTACT FORM SECTION -->
-   <div id="contact">
-  <div class="section-title"><i class="fas fa-envelope"></i> Get In Touch</div>
-  <div class="info-card" style="margin-bottom: 1.5rem;">
-    <form class="contact-form" name="enq" method="POST" action="https://api.web3forms.com/submit" onsubmit="return validateContactForm();">
-      
-      <input type="hidden" name="access_key" value="fb0d4154-6391-4f2c-9e73-8e64450bface">
-      <input type="hidden" name="subject" value="New Contact Form Submission from Portfolio">
-      <input type="hidden" name="from_name" value="K Ansar Portfolio">
-      
-      <!-- Redirect after submission (optional) -->
-      <input type="hidden" name="redirect" value="https://ansarkp10.github.io/thank-you">
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
-        <div class="form-group">
-          <label>Your Name</label>
-          <input type="text" name="name" id="contactName" class="form-control" placeholder="John Doe" required>
-        </div>
-        <div class="form-group">
-          <label>Email Address</label>
-          <input type="email" name="email" id="contactEmail" class="form-control" placeholder="john@example.com" required>
-        </div>
-        <div class="form-group">
-          <label>Subject</label>
-          <input type="text" name="subject" id="contactSubject" class="form-control" placeholder="Project Inquiry / Collaboration" required>
-        </div>
+    <div id="contact">
+      <div class="section-title"><i class="fas fa-envelope"></i> Get In Touch</div>
+      <div class="info-card" style="margin-bottom: 1.5rem;">
+        <form class="contact-form" name="enq" method="POST" action="https://api.web3forms.com/submit" onsubmit="return validateContactForm();">
+          
+          <input type="hidden" name="access_key" value="fb0d4154-6391-4f2c-9e73-8e64450bface">
+          <input type="hidden" name="subject" value="New Contact Form Submission from Portfolio">
+          <input type="hidden" name="from_name" value="K Ansar Portfolio">
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" name="name" id="contactName" class="form-control" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" name="email" id="contactEmail" class="form-control" placeholder="john@example.com" required>
+            </div>
+            <div class="form-group">
+              <label>Subject</label>
+              <input type="text" name="subject" id="contactSubject" class="form-control" placeholder="Project Inquiry / Collaboration" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label>Your Message</label>
+            <textarea rows="6" name="message" id="contactMessage" class="form-control" placeholder="I'd love to work with you..." required></textarea>
+          </div>
+          
+          <div style="text-align: center; margin-top: 0.5rem;">
+            <button type="submit" value="Send message" name="submit" id="submitButton" class="submit-btn">
+              <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+          </div>
+          
+          <div id="formMessage" class="form-message"></div>
+        </form>
       </div>
-      
-      <div class="form-group">
-        <label>Your Message</label>
-        <textarea rows="6" name="message" id="contactMessage" class="form-control" placeholder="I'd love to work with you..." required></textarea>
-      </div>
-      
-      <div style="text-align: center; margin-top: 0.5rem;">
-        <button type="submit" value="Send message" name="submit" id="submitButton" class="submit-btn">
-          <i class="fas fa-paper-plane"></i> Send Message
-        </button>
-      </div>
-      
-      <div id="formMessage" class="form-message"></div>
-    </form>
-  </div>
-</div>
+    </div>
 
     <!-- CTA -->
     <div class="hub-cta">
@@ -1034,69 +1210,45 @@
 <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
 
 <script>
+  // Mobile Menu Functions
+  function toggleMobileMenu() {
+  const mobileNav = document.getElementById('mobileNav');
+  const overlay = document.getElementById('menuOverlay');
+  const hamburger = document.getElementById('hamburgerBtn');
+  
+  mobileNav.classList.toggle('open');
+  overlay.classList.toggle('open');
+  hamburger.classList.toggle('open');  // This adds the 'open' class to hamburger
+  
+  if (mobileNav.classList.contains('open')) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+}
+
+function closeMobileMenu() {
+  const mobileNav = document.getElementById('mobileNav');
+  const overlay = document.getElementById('menuOverlay');
+  const hamburger = document.getElementById('hamburgerBtn');
+  
+  mobileNav.classList.remove('open');
+  overlay.classList.remove('open');
+  hamburger.classList.remove('open');  // This removes the 'open' class
+  document.body.style.overflow = '';
+}
   // Projects data
   const projects = [
-  // 2 ML Projects
-  { 
-    name: "ECG Heart Disease Detection", 
-    desc: "Deep learning system for detecting heart diseases from ECG images with 85%+ accuracy using CNN models.",
-    stars: "156", 
-    tech: ["TensorFlow", "Keras", "CNN"], 
-    url: "https://github.com/ansarkp10/ecg-heart-disease", 
-    img: "images/ecg-project.png" 
-  },
-  { 
-    name: "AgriSmart - Precision Farming", 
-    desc: "AI-powered farming assistant for fertilizer and irrigation recommendations using ML algorithms.",
-    stars: "89", 
-    tech: ["Python", "Scikit-learn", "Django"], 
-    url: "https://github.com/ansarkp10/agrismart", 
-    img: "images/agrismart.png" 
-  },
-  
-  // 2 Django Projects
-  { 
-    name: "EduPredict - Student Performance", 
-    desc: "Django ML platform predicting student performance with interactive analytics and PDF exports.",
-    stars: "234", 
-    tech: ["Django", "Scikit-learn", "Chart.js"], 
-    url: "https://github.com/ansarkp10/edupredict", 
-    img: "images/edupredict.png" 
-  },
-  { 
-    name: "Real Estate Price Predictor", 
-    desc: "ML-powered property valuation system with location-based predictions and confidence scoring.",
-    stars: "187", 
-    tech: ["Django", "PostgreSQL", "Scikit-learn"], 
-    url: "https://github.com/ansarkp10/real-estate-prediction", 
-    img: "images/realestate.png" 
-  },
-  
-  // 1 MERN Project
-  { 
-    name: "Pizza Ordering Platform", 
-    desc: "Full-stack MERN app with real-time order tracking, Stripe payments, and admin dashboard.",
-    stars: "445", 
-    tech: ["React", "Node.js", "MongoDB", "Express"], 
-    url: "https://github.com/ansarkp10/pizza-ordering", 
-    img: "images/pizza-project.png" 
-  },
-  
-  // 1 Data Analytics Project
-  { 
-    name: "Sales Analytics Dashboard", 
-    desc: "Interactive Power BI dashboard for sales, revenue, and customer performance analysis.",
-    stars: "67", 
-    tech: ["Power BI", "DAX", "Data Modeling"], 
-    url: "https://github.com/ansarkp10/sales-dashboard", 
-    img: "images/sales-dashboard.png" 
-  }
-];
+    { name: "ECG Heart Disease Detection", desc: "Deep learning system for detecting heart diseases from ECG images with 85%+ accuracy using CNN models.", stars: "156", tech: ["TensorFlow", "Keras", "CNN"], url: "https://github.com/ansarkp10/ecg-heart-disease", img: "images/ecg-project.png" },
+    { name: "AgriSmart - Precision Farming", desc: "AI-powered farming assistant for fertilizer and irrigation recommendations using ML algorithms.", stars: "89", tech: ["Python", "Scikit-learn", "Django"], url: "https://github.com/ansarkp10/agrismart", img: "images/agrismart.png" },
+    { name: "EduPredict - Student Performance", desc: "Django ML platform predicting student performance with interactive analytics and PDF exports.", stars: "234", tech: ["Django", "Scikit-learn", "Chart.js"], url: "https://github.com/ansarkp10/edupredict", img: "images/edupredict.png" },
+    { name: "Real Estate Price Predictor", desc: "ML-powered property valuation system with location-based predictions and confidence scoring.", stars: "187", tech: ["Django", "PostgreSQL", "Scikit-learn"], url: "https://github.com/ansarkp10/real-estate-prediction", img: "images/realestate.png" },
+    { name: "Pizza Ordering Platform", desc: "Full-stack MERN app with real-time order tracking, Stripe payments, and admin dashboard.", stars: "445", tech: ["React", "Node.js", "MongoDB", "Express"], url: "https://github.com/ansarkp10/pizza-ordering", img: "images/pizza-project.png" },
+    { name: "Sales Analytics Dashboard", desc: "Interactive Power BI dashboard for sales, revenue, and customer performance analysis.", stars: "67", tech: ["Power BI", "DAX", "Data Modeling"], url: "https://github.com/ansarkp10/sales-dashboard", img: "images/sales-dashboard.png" }
+  ];
 
-  // Loading Skeleton and then render projects
   const grid = document.getElementById('projectsGrid');
   
-  // Show skeleton loader
   function showSkeleton() {
     const skeletonHTML = `
       <div class="skeleton-card">
@@ -1111,7 +1263,6 @@
     grid.innerHTML = Array(6).fill(skeletonHTML).join('');
   }
 
-  // Render actual projects
   function renderProjects() {
     grid.innerHTML = '';
     projects.forEach(proj => {
@@ -1129,13 +1280,10 @@
     });
   }
 
-  // Simulate loading delay
   showSkeleton();
-  setTimeout(() => {
-    renderProjects();
-  }, 1500);
+  setTimeout(() => { renderProjects(); }, 1500);
 
-  // Skill progress bars animation on scroll
+  // Skill progress bars animation
   const progressBars = document.querySelectorAll('.skill-progress-fill');
   const observerSkills = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1146,10 +1294,9 @@
       }
     });
   }, { threshold: 0.5 });
-
   progressBars.forEach(bar => observerSkills.observe(bar));
 
-  // reveal animation for cards
+  // Reveal animation
   const items = document.querySelectorAll('.info-card, .project-card, .hub-cta, .profile-card');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1168,7 +1315,7 @@
     observer.observe(el);
   });
 
-  // Back to Top Button visibility
+  // Back to Top Button
   window.addEventListener('scroll', () => {
     const btn = document.getElementById('backToTop');
     if (window.scrollY > 500) {
@@ -1205,7 +1352,6 @@
       return;
     }
     
-    // Simulate sending (replace with actual API endpoint)
     formMessage.textContent = 'Sending message...';
     formMessage.className = 'form-message';
     
@@ -1230,6 +1376,7 @@
       if (target) {
         e.preventDefault();
         target.scrollIntoView({ behavior: 'smooth' });
+        closeMobileMenu();
       }
     });
   });
